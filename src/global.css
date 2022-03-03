@@ -1,0 +1,32 @@
+@font-face{
+  font-family: 'Akzidenz-grotesk';
+  src: url('/fonts/Akzidenz-grotesk-light.ttf') format('truetype');
+}
+
+@font-face{
+  font-family: 'Bandeins-strange';
+  src: url('/fonts/Bandeins-strange-variable.ttf') format('truetype');
+}
+
+:root {
+  --background: white;
+  --foreground: black;
+  --border: black;
+  --faint: #acacac;
+}
+
+html {
+  font-size: 20px;
+}
+
+* {
+  font-family: 'Akzidenz-grotesk';
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Bandeins-strange';
+}
