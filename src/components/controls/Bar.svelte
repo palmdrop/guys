@@ -35,10 +35,6 @@
 
 <style>
   .bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -57,7 +53,7 @@
 
     border: 1px solid var(--border);
 
-    flex-grow: 2;
+    width: 100%;
 
     cursor: pointer;
     text-transform: lowercase;

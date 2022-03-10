@@ -28,23 +28,31 @@
       loading = false;
     }
 	})
-     
 </script>
 
 <div class:loading class:error>
   {#if loading}
-    <em>{loadingMessage}</em>
+    <p>
+      <em>{loadingMessage}</em>
+    </p>
   {:else if error}
-    <em>{errorMessage}</em>
+    <p>
+      <em>{errorMessage}</em>
+    </p>
   {/if}
 </div>
 
 <style>
   div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 1em;
+    position: relative;
+  }
+
+  p {
+    position: absolute;
+    font-size: 1.0em;
+
+    left: 50%;
+    transform: translate(-50%, 50%);
   }
 
   .loading {

@@ -38,7 +38,7 @@ const dummyFetch = async (): Promise<FetchData> => {
   let guys = [
     {
       date: "May 13",
-      content: ["Guy beyond time", "Who is he?", null, "what" ]
+      content: ["Guy beyond time", "Who is he?", null, "what", "morew", "morew", "more", "more", "more", "more", "more" ]
     },
     {
       date: "Apr 23",

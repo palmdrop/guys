@@ -5,8 +5,6 @@
 
   let expanded = false;
 
-  $: if(guyData) expanded = false; // Reactive to make sure it resets on guy change
-
   $: rest = guyData
     .content
     .slice(1)
@@ -21,18 +19,18 @@
     { expanded ? "less" : "more" }
   </button> 
 
-  <div class="more">
 
-    {#if expanded}
+  {#if expanded}
+    <div class="more">
 
       {#each rest as line }
         <p>
-          <em>{ line }</em>
+          { line }
         </p>
       {/each}
 
-    {/if}
-  </div> 
+    </div> 
+  {/if}
 {/if}
 
 <style>
@@ -44,7 +42,16 @@
 
     max-height: 200px;
     overflow-y: auto;
-    padding: 2px;
+
+    padding-top: 1em;
+  }
+
+  p {
+    white-space: pre-line;
+  }
+
+  p:not(:last-child) {
+    padding-bottom: 1.0em;
   }
 
   button {
@@ -56,6 +63,7 @@
     cursor: pointer;
 
     margin: 0em;
+    padding-top: 1em;
   }
 
   button:active {
