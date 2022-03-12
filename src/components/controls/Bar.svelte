@@ -51,20 +51,17 @@
     background-color: inherit;
     color: var(--foreground);
 
-    border: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    border-radius: 0;
 
     width: 100%;
+    margin: 0em;
 
     cursor: pointer;
     text-transform: lowercase;
 
-    margin: 0em;
-
     transition: 0.3s;
-  }
-
-  button:not(:last-child) {
-    border-right: none;
   }
 
   button:active {
@@ -74,6 +71,11 @@
   button:hover {
     color: var(--background);
     background-color: var(--foreground);
+    border: 1px solid var(--border);
+  }
+
+  button:first-child {
+    border-left: none;
   }
 
   .deactivated {

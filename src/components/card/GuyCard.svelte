@@ -28,5 +28,8 @@
 <style>
   p {
     padding: 0.5em 0em;
+
+    max-height: 25vh;
+    overflow-y: auto;
   }
 </style>

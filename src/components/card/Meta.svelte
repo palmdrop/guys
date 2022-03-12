@@ -8,7 +8,7 @@
 </script>
 
 <div class="meta">
-  <div class="item">{guyData.date}</div>
+  <div class="item">#{index + 1}</div>
 
   {#if index === 0 }
 
@@ -20,7 +20,7 @@
 
   {/if}
 
-  <div class="item">#{index + 1}</div>
+  <div class="item">{guyData.date}</div>
 </div>
 
 <style>

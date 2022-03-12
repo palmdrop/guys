@@ -20,7 +20,7 @@
 <style>
   header {
     width: 100vw;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     box-sizing: border-box;
 
     display: flex;
@@ -33,6 +33,16 @@
     font-family: 'Bandeins-strange';
     font-size: 0.9rem;
     color: var(--faint);
+  }
+
+  p:first-child {
+    text-align: left;
+    margin-right: 0.2em;
+  }
+  
+  p:last-child {
+    text-align: right;
+    margin-left: 0.2em;
   }
 
   a {

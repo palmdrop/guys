@@ -8,29 +8,36 @@
 	import Placeholder from './components/loading/Placeholder.svelte';
 	import Status from './components/loading/Status.svelte';
 	import Header from './components/header/Header.svelte';
+import { RandomOrder } from './util/RandomOrder';
 
 	const HASH_NUMBER_REGEX = /^#[0-9]+$/;
 
+	// If the url contains a valid index, parse and use as the current index
+	// If not, default to -1, indicating that the latest guy should be displayed once loaded
 	let index = HASH_NUMBER_REGEX.test(window.location.hash) 
 		? Number.parseInt(window.location.hash.slice(1))
-		: 1;
+		: -1;
 
+	// Every time the index changes, update the url hash (if valid index)
 	$: {
-		window.location.hash = '' + index;
+		if (index >= 1 && index <= $guys$.length) {
+			window.location.hash = '' + index;
+		}
 	}
 
+	// Used for better randomness
+	const randomOrder = new RandomOrder(1);
+
+	// Make sure the index is valid when the guys data updates (length might have changed)
 	guys$.subscribe(guys => {
-		if(guys.length && index >= guys.length) {
-			index = guys.length - 1;
-		} else if(guys.length) {
-			index = 1;
+		if (guys.length) {
+			index = (index === -1) 
+				? guys.length // Default to last guy
+				: Math.min(Math.max(index, 1), guys.length);
+
+			randomOrder.setLength(guys.length);
 		}
 	})
-
-	// TODO: fix line endings in description/more
-	// TODO: remove swedish and references to our names
-	// TODO: scroll in main guy card (for really long guys)
-	// TODO: alignment of main slightly off, not lining up with controls?
 
 	const handleNext = () => {
 		index = Math.min(index + 1, $guys$.length)
@@ -41,14 +48,10 @@
 	}
 
 	const handleRandom = () => {
-		let newIndex;
-		while(
-			(newIndex = (Math.floor(Math.random() * $guys$.length)) + 1) === index
-		);
-
-		index = newIndex;
+		index = randomOrder.next() + 1;
 	}
 
+	// Fetch guys
 	onMount(async () => {
 		await fetchToStores();
 	})
@@ -66,13 +69,13 @@
 			<h1>guys</h1>
 
 			{#if index > 0 && index <= $guys$.length }
+				<Status />
+
 				<GuyCard 
 					index={index - 1}
 					guyData={$guys$[index - 1]}
 					numberOfGuys={$guys$.length}
 				/>
-
-				<Status />
 			{:else}
 				<Placeholder
 					text="A guy is coming your way..."
@@ -116,7 +119,7 @@
 		box-sizing: border-box;
 		border: 1px solid var(--border);
 
-		margin-top: clamp(5vh, 10vw, 15vh);
+		margin-top: clamp(8vh, calc((10vw + 10vh) / 2), 12vh);
 	}
 
 	h1 {

@@ -52,7 +52,7 @@
     font-size: 1.0em;
 
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 0);
   }
 
   .loading {
