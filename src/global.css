@@ -1,33 +1,12 @@
 @font-face{
-  font-family: 'Akzidenz-grotesk';
-  src: url('/fonts/Akzidenz-grotesk-light.ttf') format('truetype');
-}
-
-@font-face{
   font-family: 'Bandeins-strange';
   src: url('/fonts/Bandeins-strange-variable.ttf') format('truetype');
-}
-
-@font-face{
-  font-family: 'Space-grotesk';
-  src: url('/fonts/Space-grotesk-light.ttf') format('truetype');
-}
-
-@font-face{
-  font-family: 'Arcon';
-  src: url('/fonts/Arcon-regular.otf') format('truetype');
-}
-
-@font-face{
-  font-family: 'Fax-sans';
-  src: url('/fonts/Fax-sans.otf') format('truetype');
 }
 
 @font-face{
   font-family: 'Manrope';
   src: url('/fonts/Manrope-Light.ttf') format('truetype');
 }
-
 
 :root {
   --background: white;
@@ -53,7 +32,6 @@ html {
 }
 
 * {
-  /* font-family: 'Space-grotesk'; */
   font-family: 'Manrope';
   padding: 0;
   margin: 0;

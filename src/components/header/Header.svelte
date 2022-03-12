@@ -3,7 +3,7 @@
 
 <header>
   <p>
-    by two thirds of <em>KEVIN</em>
+    by the entirety of <em>KEVIN</em>
   </p>
   <p>
     shamelessly ripping of 

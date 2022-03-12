@@ -55,6 +55,7 @@ import { RandomOrder } from './util/RandomOrder';
 	onMount(async () => {
 		await fetchToStores();
 	})
+
 </script>
 
 <svelte:head>
@@ -97,9 +98,8 @@ import { RandomOrder } from './util/RandomOrder';
 
 <style>
 	.app {
-		position: fixed;
 		width: 100vw;
-		height: 100vh;
+		height: 100%;
 
 		display: flex;
 		flex-direction: column;
@@ -115,6 +115,7 @@ import { RandomOrder } from './util/RandomOrder';
 		max-width: calc(100vw - 8px);
 
 		margin: auto;
+		margin-bottom: 2em;
 
 		box-sizing: border-box;
 		border: 1px solid var(--border);
