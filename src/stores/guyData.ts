@@ -1,6 +1,7 @@
 import { StoreSubject } from "./StoreSubject";
+import guyData from './data.json';
 
-const url = 'https://sheets-test.webspace.pages.dev/api/guys';
+const url = 'https://palmdrop.site/api/guys';
 
 export type GuyData = {
   date: string,
@@ -32,28 +33,26 @@ export const nextFetchDelay$ = new StoreSubject<number>(0);
 export const guys$ = new StoreSubject<GuyData[]>([])
 
 const dummyFetch = async (): Promise<FetchData> => {
-  let cacheStatus = "uh";
-  let cacheTTL = 60;
-  let retryTimeout = undefined;
-  let guys = [
-    {
-      date: "May 13",
-      content: ["Guy beyond time", "Who is he?", null, "what", "morew", "morew", "more", "more", "more", "more", "more" ]
-    },
-    {
-      date: "Apr 23",
-      content: ["Guy growing larger and larger, he's the biggest in the world", "Where is he now?", null, null ],
-    },
-    {
-      date: "Feb 1",
-      content: ["Guy standing naked in the wind", "this hsi jsi jcei fdjei fjeif jeif jeif jeif jefi ejf iejf iejf iejfiejf iejf eif", "he looks at the sea", "and just one more a little bit lponger and one more pleasssasa" ],
-    },
-  ]
+  const { 
+    cacheStatus,
+    cacheTTL,
+    data,
+  } = guyData;
+
+  await new Promise(resolve => {
+    setTimeout(() => {
+      resolve(true);
+    }, 2000)
+  });
+
+  const guys: GuyData[] = [].concat.apply(
+    [], [...data.pages]
+  );
 
   return {
     cacheStatus,
     cacheTTL,
-    retryTimeout,
+    retryTimeout: undefined,
     guys,
   }
 }

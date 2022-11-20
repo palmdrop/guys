@@ -21,8 +21,6 @@ export class RandomOrder {
     this.index = 0;
 
     shuffleArray(this.order);
-
-    console.log(this.order);
   }
 
   next() {
