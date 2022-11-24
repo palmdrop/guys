@@ -59,30 +59,44 @@
     user-select: text;
   }
   .guy-entry {
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-
     width: 100%;
     cursor: pointer;
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .guy {
     font-style: italic;
-    letter-spacing: 0.03rem;
+    letter-spacing: 0.03em;
+    line-height: 1.1em;
 
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
     padding-left: 0em;
   }
 
   @media only screen and (min-width: 500px) {
+    .guy-entry {
+      display: grid;
+      grid-template-columns: 5fr 1fr;
+
+      width: 100%;
+      cursor: pointer;
+    }
+
     .guy {
       padding-left: 1em;
+      line-height: 1.2em;
     } 
+
+    .date {
+      opacity: 1;
+    }
   }
 
   .guy p {
-    padding-bottom: 0.5rem;
-    padding-right: 0.5rem;
-    line-height: 1.5rem;
+    padding-right: 0.5em;
+    padding-bottom: 0.5em;
   }
 
   .guy p:first-child {
@@ -92,6 +106,7 @@
   .date {
     text-align: right;
     padding-left: 1em;
-    padding-top: 0.5rem;
+    padding-top: 0.5em;
+    opacity: 0.5;
   }
 </style>

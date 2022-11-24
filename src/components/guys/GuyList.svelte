@@ -23,7 +23,7 @@
     padding-right: 1em;
   }
 
-  @media only screen and (min-width: 370px) {
+  @media only screen and (min-width: 500px) {
     ol {
       padding-left: 3em;
       list-style: decimal;

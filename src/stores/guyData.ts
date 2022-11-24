@@ -39,11 +39,13 @@ const dummyFetch = async (): Promise<FetchData> => {
     data,
   } = guyData;
 
+  /*
   await new Promise(resolve => {
     setTimeout(() => {
       resolve(true);
     }, 2000)
   });
+  */
 
   const guys: GuyData[] = [].concat.apply(
     [], [...data.pages]
@@ -92,8 +94,8 @@ export const fetchToStores = async () => {
         retryTimeout,
         guys,
       } 
-      // = await dummyFetch();
-      = await fetchGuys();
+      = await dummyFetch();
+      // = await fetchGuys();
 
       fetchStatus$.next('succeeded');
 
