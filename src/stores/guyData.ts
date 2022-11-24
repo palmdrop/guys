@@ -94,8 +94,8 @@ export const fetchToStores = async () => {
         retryTimeout,
         guys,
       } 
-      = await dummyFetch();
-      // = await fetchGuys();
+      // = await dummyFetch();
+      = await fetchGuys();
 
       fetchStatus$.next('succeeded');
 
