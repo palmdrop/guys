@@ -34,7 +34,7 @@
 
 		{ #if !$guys$.length }
 			<p class="no-guys">
-				...
+				no guys loaded...
 			</p>
 		{ /if }
 	</main>
@@ -80,5 +80,6 @@
 	.no-guys {
 		width: 100%;
 		text-align: center;
+		opacity: 0.5;
 	}
 </style>

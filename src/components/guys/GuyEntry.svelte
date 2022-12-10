@@ -4,6 +4,9 @@
     export let guyData: GuyData;
     export let index: number;
 
+    // Kudos https://betterprogramming.pub/detecting-external-links-in-a-paragraph-of-text-with-javascript-automatically-3c15537f4997
+    const linkRegex = /(https?:\/\/)?[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~@:%]*)*(#[\w\-]*)?(\?[^\s]*)?/gi;
+
     $: guy = guyData.content[0];
     $: rest = guyData.content.slice(1).filter(line => !!line);
     $: date = new Date(
@@ -39,11 +42,17 @@
 </li>
 
 <style>
+  li:first-child {
+    counter-reset: reversed(guys);
+  }
+
   li {
     --border: 1px solid black;
 
     width: 100%;
     font-size: 1rem;
+
+    position: relative;
   }
 
   li:not(:last-child) {
@@ -58,6 +67,7 @@
     position: relative;
     user-select: text;
   }
+
   .guy-entry {
     width: 100%;
     cursor: pointer;
@@ -73,6 +83,35 @@
     padding-top: 0.2em;
     padding-bottom: 0.2em;
     padding-left: 0em;
+  }
+
+  li::before {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.2rem;
+    content: counter(guys) ".";
+    opacity: 0.5;
+
+    text-decoration: underline;
+
+    counter-increment: guys -1;
+  }
+
+  .guy p {
+    padding-right: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  .guy p:first-child {
+    padding-top: 0.5em;
+  }
+
+  .date {
+    text-align: right;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    opacity: 0.5;
+    text-decoration: underline;
   }
 
   @media only screen and (min-width: 500px) {
@@ -91,22 +130,11 @@
 
     .date {
       opacity: 1;
+      text-decoration: none;
     }
-  }
 
-  .guy p {
-    padding-right: 0.5em;
-    padding-bottom: 0.5em;
-  }
-
-  .guy p:first-child {
-    padding-top: 0.5em;
-  }
-
-  .date {
-    text-align: right;
-    padding-left: 1em;
-    padding-top: 0.5em;
-    opacity: 0.5;
+    li::before {
+      content: "";
+    }
   }
 </style>
