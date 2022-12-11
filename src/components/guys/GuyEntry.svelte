@@ -6,9 +6,39 @@
 
     // Kudos https://betterprogramming.pub/detecting-external-links-in-a-paragraph-of-text-with-javascript-automatically-3c15537f4997
     const linkRegex = /(https?:\/\/)?[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~@:%]*)*(#[\w\-]*)?(\?[^\s]*)?/gi;
+    const newlineRegex = /\r?\n/g;
 
-    $: guy = guyData.content[0];
-    $: rest = guyData.content.slice(1).filter(line => !!line);
+    const processLine = (line: string) => {
+      return line
+        .split(newlineRegex)
+        .map(line => 
+          line.replaceAll(
+            linkRegex,
+            url => {
+              return `
+                <a 
+                  noreferrer 
+                  noopener 
+                  target="_blank" 
+                  href=${url}
+                  class="link"
+                >
+                  ${url}
+                </a>`;
+            }
+          )
+        );
+    };
+
+    $: guyLines = guyData
+      .content
+      .filter(Boolean)
+      .map(processLine)
+      .flat();
+
+    $: guy = guyLines[0];
+    $: rest = guyLines.slice(1);
+
     $: date = new Date(
         Date.parse(guyData.date)
       ).toLocaleString('en-uk', {
@@ -25,12 +55,12 @@
   >
     <div class="guy">
       <p>
-        { guy }
+        {@html guy }
       </p>
       { #if rest.length }
         { #each rest as line, i (i) }
           <p>
-            { line }  
+            { @html line }  
           </p>
         { /each }
       { /if }

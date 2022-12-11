@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { fetchStatus$, fetchToStores, guys$ } from './stores/guyData';
 	import Header from './components/header/Header.svelte';
-  import GuyList from './components/guys/GuyList.svelte';
+  	import GuyList from './components/guys/GuyList.svelte';
 
 	// Fetch guys
 	onMount(async () => {
@@ -46,6 +46,23 @@
 
 		display: flex;
 		flex-direction: column;
+	}
+
+	:global(a) {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		color: black;
+	}
+
+	:global(a:hover) {
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		color: black;
+	}
+
+	:global(a:visited) {
+		text-decoration: underline;
+		color: black;
 	}
 
 	main {
