@@ -5,7 +5,7 @@
     export let index: number;
 
     // Kudos https://betterprogramming.pub/detecting-external-links-in-a-paragraph-of-text-with-javascript-automatically-3c15537f4997
-    const linkRegex = /(https?:\/\/)?[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~@:%]*)*(#[\w\-]*)?(\?[^\s]*)?/gi;
+    const linkRegex = /(https?:\/\/)[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~@:%]*)*(#[\w\-]*)?(\?[^\s]*)?/gi;
     const newlineRegex = /\r?\n/g;
 
     const processLine = (line: string) => {
