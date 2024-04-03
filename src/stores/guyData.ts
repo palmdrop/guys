@@ -1,5 +1,4 @@
 import { StoreSubject } from "./StoreSubject";
-import guyData from './data.json';
 
 const url = 'https://palmdrop.site/api/guys';
 
@@ -31,33 +30,6 @@ export type FetchStatus =
 export const fetchStatus$ = new StoreSubject<FetchStatus>('pending');
 export const nextFetchDelay$ = new StoreSubject<number>(0);
 export const guys$ = new StoreSubject<GuyData[]>([])
-
-const dummyFetch = async (): Promise<FetchData> => {
-  const { 
-    cacheStatus,
-    cacheTTL,
-    data,
-  } = guyData;
-
-  /*
-  await new Promise(resolve => {
-    setTimeout(() => {
-      resolve(true);
-    }, 2000)
-  });
-  */
-
-  const guys: GuyData[] = [].concat.apply(
-    [], [...data.pages]
-  );
-
-  return {
-    cacheStatus,
-    cacheTTL,
-    retryTimeout: undefined,
-    guys,
-  }
-}
 
 export const fetchGuys = async (): Promise<FetchData> => {
   const response = await fetch(
